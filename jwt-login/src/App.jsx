@@ -21,6 +21,7 @@ function App() {
             required
           />
         </div>
+        <button type="submit">Login</button>
       </form>
     </div>
   );
