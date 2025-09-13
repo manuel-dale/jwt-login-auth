@@ -2,10 +2,9 @@ import './styles/App.css'
 
 function App() {
   return (
-    <>
-    <p>Hello world!</p>
-    </>
-  )
+    <div className="login-container">
+    </div>
+  );
 }
 
 export default App
