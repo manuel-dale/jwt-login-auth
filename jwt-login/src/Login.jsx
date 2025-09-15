@@ -1,6 +1,11 @@
-import './styles/App.css'
+import './styles/App.css';
+import { useRef, useState, useEffect } from 'react';
 
 function Login() {
+
+    const userRef = useRef();
+    const errRef = useRef();
+
     return (
     <div className="login-container">
       <h2>Login</h2>
