@@ -6,6 +6,8 @@ function Login() {
     const userRef = useRef();
     const errRef = useRef();
 
+    const [user, setUser] = useState('');
+    
     return (
     <div className="login-container">
       <h2>Login</h2>
