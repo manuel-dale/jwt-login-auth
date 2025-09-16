@@ -14,6 +14,7 @@ app.use(cors());
 app.use(bodyParser.json());
 
 app.post('/login', async (req, res) => {
+    const { email, password } = req.body;
     
 });
 
