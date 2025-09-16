@@ -10,4 +10,6 @@ const bcrypt = require('bcrypt');
 const jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+app.use(cors());
+
 app.listen(PORT);
