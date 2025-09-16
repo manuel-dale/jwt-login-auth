@@ -20,7 +20,10 @@ app.post('/login', async (req, res) => {
     const user = result.rows[0];
 
     if (user && await bcrypt.compare(password, user.password)) {
+        const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '10m' });
+
+        return res.json({ accessToken });
     };
 });
-    
+
 app.listen(PORT);
