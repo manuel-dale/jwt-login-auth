@@ -13,4 +13,8 @@ require('dotenv').config();
 app.use(cors());
 app.use(bodyParser.json());
 
+app.post('/login', async (req, res) => {
+    
+});
+
 app.listen(PORT);
