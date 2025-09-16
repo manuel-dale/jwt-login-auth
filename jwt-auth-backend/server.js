@@ -16,14 +16,22 @@ app.use(bodyParser.json());
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
-    const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
-    const user = result.rows[0];
+    try {
+        const result = await pool.query('SELECT * FROM users WHERE email = $1', [email]);
+        const user = result.rows[0];
 
-    if (user && await bcrypt.compare(password, user.password)) {
-        const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '10m' });
+        if (user && await bcrypt.compare(password, user.password)) {
+            const accessToken = jwt.sign({ id: user.id }, process.env.JWT_SECRET, { expiresIn: '10m' });
 
-        return res.json({ accessToken });
-    };
+            return res.json({ accessToken });
+        } else {
+            
+            return res.status(401).json({ message: 'Invalid email or password' });
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).json({ message: 'Server error' });
+    }
 });
 
 app.listen(PORT);
