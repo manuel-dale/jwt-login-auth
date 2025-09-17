@@ -4,14 +4,18 @@ import axios from 'axios';
 
 function Login() {
 
-    const userRef = useRef();
-    const errRef = useRef();
+  const userRef = useRef();
+  const errRef = useRef();
 
-    const [user, setUser] = useState('');
-    const [password, setPassword] = useState('');
-    const [errorMessage, setErrorMessage] = useState('');
+  const [user, setUser] = useState('');
+  const [password, setPassword] = useState('');
+  const [errorMessage, setErrorMessage] = useState('');
 
-    return (
+  useEffect(() => {
+    userRef.current.focus();
+  }, []);
+
+  return (
     <div className="login-container">
       <h2>Login</h2>
       <form>
@@ -34,7 +38,7 @@ function Login() {
         <button type="submit">Login</button>
       </form>
     </div>
-    )
+  )
 };
 
 export default Login;
