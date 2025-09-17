@@ -13,6 +13,14 @@ require('dotenv').config();
 app.use(cors());
 app.use(bodyParser.json());
 
+const pool = new Pool({
+    user: process.env.DB_USER,
+    host: process.env.DB_HOST,
+    database: process.env.DB_NAME,
+    password: process.env.DB_PWD,
+    port: process.env.DB_PORT,
+});
+
 app.post('/login', async (req, res) => {
     const { email, password } = req.body;
 
@@ -25,7 +33,7 @@ app.post('/login', async (req, res) => {
 
             return res.json({ accessToken });
         } else {
-            
+
             return res.status(401).json({ message: 'Invalid email or password' });
         }
     } catch (error) {
