@@ -30,6 +30,8 @@ function Login() {
             <input
               type="text"
               id="username"
+              value={user}
+              onChange={(e) => setUser(e.target.value)}
               required
             />
           </div>
