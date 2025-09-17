@@ -17,6 +17,11 @@ function Login() {
 
   return (
     <section>
+      {errorMessage ? (
+        <p ref={errRef} className="errorMessage" aria-live='assertive'>
+          {errorMessage}
+        </p>
+      ) : null}
       <div className="login-container">
         <h2>Login</h2>
         <form>
