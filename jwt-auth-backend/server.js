@@ -33,7 +33,7 @@ app.post('/login', async (req, res) => {
 
             return res.json({ accessToken });
         } else {
-            
+
             return res.status(401).json({ message: 'Invalid email or password' });
         }
     } catch (error) {
