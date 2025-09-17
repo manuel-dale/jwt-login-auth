@@ -31,6 +31,7 @@ function Login() {
               type="text"
               id="username"
               value={user}
+              autoComplete='off'
               onChange={(e) => setUser(e.target.value)}
               required
             />
