@@ -1,9 +1,11 @@
 import './styles/App.css';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
+import AuthContext from './AuthProvider.jsx';
 
 function Login() {
 
+  const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
 
