@@ -25,10 +25,23 @@ function Login() {
     e.preventDefault();
     const url = import.meta.env.VITE_LOGIN_URL;
 
-    const response = await axios.post(url, {
-      email: user,
-      password: password,
-    });
+    try {
+      const response = await axios.post(url, {
+        email: user,
+        password: password,
+      });
+
+      const accessToken = response?.data?.accessToken;
+      console.log(response?.data?.accessToken)
+      setAuth({ user, password, accessToken }) // Store in Auth object
+
+      setErrorMessage('')
+    } catch (err) {
+      console.log('Invalid username or password')
+      setErrorMessage('Invalid username or password')
+
+      errRef?.current?.focus();
+    }
   };
 
   return (
