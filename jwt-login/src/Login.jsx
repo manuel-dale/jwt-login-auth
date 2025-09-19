@@ -22,7 +22,7 @@ function Login() {
   }, [user, password]);
 
   function handleSubmit(e) {
-
+    e.preventDefault();
   };
 
   return (
