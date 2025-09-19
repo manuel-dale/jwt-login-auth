@@ -53,7 +53,7 @@ function Login() {
       ) : null}
       <div className="login-container">
         <h2>Login</h2>
-        <form>
+        <form onSubmit={handleSubmit}>
           <div>
             <label htmlFor="username">Username:</label>
             <input
