@@ -21,9 +21,14 @@ function Login() {
     setErrorMessage('')
   }, [user, password]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     const url = import.meta.env.VITE_LOGIN_URL;
+
+    const response = await axios.post(url, {
+      email: user,
+      password: password,
+    });
   };
 
   return (
