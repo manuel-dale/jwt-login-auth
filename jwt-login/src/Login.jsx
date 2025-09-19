@@ -21,6 +21,10 @@ function Login() {
     setErrorMessage('')
   }, [user, password]);
 
+  function handleSubmit(e) {
+
+  };
+
   return (
     <section>
       {errorMessage ? (
