@@ -17,6 +17,10 @@ function Login() {
     userRef.current.focus();
   }, []);
 
+  useEffect(() => {
+    setErrorMessage('')
+  }, [user, password]);
+
   return (
     <section>
       {errorMessage ? (
