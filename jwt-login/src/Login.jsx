@@ -1,9 +1,11 @@
 import './styles/App.css';
 import { useRef, useState, useEffect } from 'react';
 import axios from 'axios';
+import AuthContext from './AuthProvider.jsx';
 
 function Login() {
 
+  const { setAuth } = useContext(AuthContext);
   const userRef = useRef();
   const errRef = useRef();
 
@@ -14,6 +16,33 @@ function Login() {
   useEffect(() => {
     userRef.current.focus();
   }, []);
+
+  useEffect(() => {
+    setErrorMessage('')
+  }, [user, password]);
+
+  async function handleSubmit(e) {
+    e.preventDefault();
+    const url = import.meta.env.VITE_LOGIN_URL;
+
+    try {
+      const response = await axios.post(url, {
+        email: user,
+        password: password,
+      });
+
+      const accessToken = response?.data?.accessToken;
+      console.log(response?.data?.accessToken)
+      setAuth({ user, password, accessToken }) // Store in Auth object
+
+      setErrorMessage('')
+    } catch (err) {
+      console.log('Invalid username or password')
+      setErrorMessage('Invalid username or password')
+
+      errRef?.current?.focus();
+    }
+  };
 
   return (
     <section>
