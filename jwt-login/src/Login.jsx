@@ -23,6 +23,7 @@ function Login() {
 
   function handleSubmit(e) {
     e.preventDefault();
+    const url = import.meta.env.VITE_LOGIN_URL;
   };
 
   return (
