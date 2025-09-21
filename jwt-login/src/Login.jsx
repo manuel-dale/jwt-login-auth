@@ -1,5 +1,5 @@
 import './styles/App.css';
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useContext } from 'react';
 import axios from 'axios';
 import AuthContext from './AuthProvider.jsx';
 
